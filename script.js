@@ -16,10 +16,23 @@
 // При натисканні на кнопку - змінювати колірну гаму сайту (кольори кнопок, фону тощо) на ваш розсуд. При повторному натискання - повертати все як було спочатку - начебто для сторінки доступні дві колірні теми.
 // Вибрана тема повинна зберігатися після перезавантаження сторінки
 
-document.getElementById('change-theme-btn').addEventListener('click', function () {
-    let darkThemeEnabled = document.body.classList.toggle('dark-theme');
-    localStorage.setItem('dark-theme-enabled');
+
+// const body = document.querySelector("body");
+const changeThemeBtn = document.querySelector("#change-theme-btn");
+
+if (localStorage.getItem("theme") === "changed") {
+    darkTheme = document.body.classList.add('dark-theme');
+    // body.style.backgroundColor = "grey";
+}
+
+changeThemeBtn.addEventListener("click", () => {
+    if (localStorage.getItem("theme") === "changed") {
+        localStorage.removeItem("theme");
+        darkTheme = document.body.classList.remove('dark-theme');
+        // body.style.backgroundColor = "#fff";
+    } else {
+        localStorage.setItem("theme", "changed");
+        darkTheme = document.body.classList.add('dark-theme');
+        // body.style.backgroundColor = "grey";
+    }
 });
-
-
-    document.body.classList.add('dark-theme');
