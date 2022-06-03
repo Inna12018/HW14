@@ -19,6 +19,7 @@
 
 // const body = document.querySelector("body");
 const changeThemeBtn = document.querySelector("#change-theme-btn");
+let darkTheme;
 
 if (localStorage.getItem("theme") === "changed") {
     darkTheme = document.body.classList.add('dark-theme');
